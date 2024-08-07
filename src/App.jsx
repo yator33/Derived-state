@@ -1,12 +1,12 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 
 export default function App() {
   const [items, setItems] = useState([1, 2, 3, 4, 5])
   const [inputValue, setInputValue] = useState("")
 
-  const filteredItems = 
+  const filteredItems = useMemo(() => {
           inputValue === "" ? items : items.filter(item => item < inputValue)
-
+        },[items, inputValue])
   return (
     <>
     <label htmlFor="lessThan">Show Less Than</label>
